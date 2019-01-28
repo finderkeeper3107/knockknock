@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using KnkKnk.Model;
@@ -19,7 +20,7 @@ namespace KnkKnk.Controllers
         [Route("ReverseWords")]
         public ActionResult<string> ReverseWords([FromQuery] string sentence)
         {
-
+            Debug.WriteLine($"Requested sentence is {sentence}");
             string reverseString = string.Empty;
             try
 
@@ -37,6 +38,7 @@ namespace KnkKnk.Controllers
         [Route("Fibonacci")]
         public ActionResult<long> Fibonacci([FromQuery] int n)
         {
+            Debug.WriteLine($"Requested number is {n}");
             if (n > 92)
                 return this.NotFound();
             Dictionary<int, long> fibDictionary = new Dictionary<int, long>();
@@ -68,6 +70,7 @@ namespace KnkKnk.Controllers
         [Route("TriangleType")]
         public ActionResult<string> TriangleType([FromQuery] int a, [FromQuery] int b, [FromQuery] int c)
         {
+            Debug.WriteLine($"Requested triangle type is {a}, {b} and {c}");
             Triangle triangle = new Triangle(a, b, c);
             return triangle.TriangleType.ToString();
 
